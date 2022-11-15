@@ -1,6 +1,6 @@
 import React from "react";
 import { BookProps } from "../typing";
-import getAllBooks from "../helpers/getAllBooks";
+import getAllBooks from "../pages/api/getAllBooks";
 import Book from "./Book";
 import Link from "next/link";
 
@@ -18,5 +18,3 @@ const Home = async (props: Props) => {
 };
 
 export default Home;
-
-

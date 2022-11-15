@@ -20,3 +20,12 @@ export type Option = {
   value: string;
   label: string;
 };
+
+export type LoginForm = {
+  username: string;
+  password: string;
+};
+export type ResLogin = {
+  userId: string;
+  token: string;
+};

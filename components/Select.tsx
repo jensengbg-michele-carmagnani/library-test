@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState } from "react";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 
@@ -7,9 +7,9 @@ type Props = {
   id: string;
 };
 const Select: React.FC<Props> = ({ id }) => {
-  const [defaultOption, setDefaultOption] = useState("Want to read");
+  const [selectedOption, setSelectedOption] = useState("Choose an option");
   const changeOptionHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDefaultOption(e.target.value);
+    setSelectedOption(e.target.value);
   };
   return (
     <div>
@@ -17,14 +17,15 @@ const Select: React.FC<Props> = ({ id }) => {
         placeholder="Select"
         name=""
         id={id}
-        value="S"
+        value={selectedOption}
         required
         onChange={(e) => changeOptionHandler(e)}
-        className={` placeholder-night-900 focus:outline-none rounded-md bg-[#3d9363] py-3 px-4 w-full font-medium mb-2 cursor-pointer `}
+        className={` placeholder-night-900 focus:outline-none rounded-md bg-[#3d9363] py-3  px-4 w-full font-medium mb-2 cursor-pointer `}
       >
-        <option  selected value={defaultOption}>
-          {defaultOption}
+        <option selected value="">
+          Choose an options
         </option>
+
         {OPTIONS_BOOKS?.map((option, index) => {
           return (
             <option key={index} className="text-white" value={option.value}>
@@ -33,15 +34,6 @@ const Select: React.FC<Props> = ({ id }) => {
           );
         })}
       </select>
-
-      {/* {validate &&
-        checkIfInputError(id, validationErrors).map((message, index) => {
-          return (
-            <p key={index} className="text-danger text-xs">
-              {message}
-            </p>
-          );
-        })} */}
     </div>
   );
 };
