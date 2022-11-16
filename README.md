@@ -1,13 +1,9 @@
-
-
 # @testLibrary
 
 This is the UI for test.
 
-- Next js 13 
+- Next js 13
 - Typescript
-
-
 
 # Installation
 
@@ -24,12 +20,12 @@ You can start the project with several different configurations
 ```bash
 
 npm run dev #  localhost:3000
-npm run build # don't work due to the use of next-auth 
-npm run start # don't work due to the use of next-auth 
+npm run build # don't work due to the use of next-auth
+npm run start # don't work due to the use of next-auth
 
 ```
 
-# Create a .env.local in the root 
+# Create a .env.local in the root
 
 API_URL=https://devies-reads-be.onrender.com
 FACEBOOK_CLIENT_ID=1254716498594229
@@ -43,22 +39,16 @@ Please try to use Typescript and follow all the code isolated to that component 
 ```bash
 - interfaces
 - hooks
+-helper
+- app
+    - page.tsx
+    - sever components 
+      -segment
+        -page.tsx
+        - sever components
 - components
-    - TestComponent
-        - interfaces
-        - hooks
-        - components
-        - __tests__
-            - TestComponent.test.tsx
-        - TestComponent.tsx
-        - index.tsx
-- views
-    - TestView
-        - components
-        - interfaces
-        - hooks
-        TestView.tsx
-        index.tsx
+    - client components
+
 ```
 
 **TestComponent.tsx**
@@ -89,4 +79,3 @@ export const percentage = (partialValue: number, totalValue: number) => {
 
 export default { percentage };
 ```
-
