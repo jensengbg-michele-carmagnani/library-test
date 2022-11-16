@@ -1,27 +1,92 @@
-# Next.js + Tailwind CSS Example
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
-## Deploy your own
+# @testLibrary
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+This is the UI for test.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- Next js 13 
+- Typescript
 
-## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
+# Installation
+
+Install dependencies using npm
 
 ```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+npm install
 ```
+
+# Running the project locally
+
+You can start the project with several different configurations
 
 ```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
+
+npm run dev #  localhost:3000
+npm run build # don't work due to the use of next-auth 
+npm run start # don't work due to the use of next-auth 
+
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+# Create a .env.local in the root 
+
+API_URL=https://devies-reads-be.onrender.com
+FACEBOOK_CLIENT_ID=1254716498594229
+FACEBOOK_CLIENT_SECRET=ef7b80948599d4bcb09b474e548add56
+NEXTAUTH_SECRET=DFJDLSAJFDSJFLJ4532KNL34432Ö5L4KN
+
+# Code conventions
+
+Please try to use Typescript and follow all the code isolated to that component inside the folder structure. If any code is to be used in several components, move it outside to the root.
+
+```bash
+- interfaces
+- hooks
+- components
+    - TestComponent
+        - interfaces
+        - hooks
+        - components
+        - __tests__
+            - TestComponent.test.tsx
+        - TestComponent.tsx
+        - index.tsx
+- views
+    - TestView
+        - components
+        - interfaces
+        - hooks
+        TestView.tsx
+        index.tsx
+```
+
+**TestComponent.tsx**
+
+```typescript
+// This file contains tsx and should be named .tsx
+import React from "react";
+
+interface Props {
+  title?: string;
+}
+
+const TestComponent: React.FC<Props> = ({ title }) => {
+  return <div>{title}</div>;
+};
+
+export default TestComponent;
+```
+
+**helper.ts**
+
+```typescript
+// This file only contains ts code so should have .ts
+
+export const percentage = (partialValue: number, totalValue: number) => {
+  return Math.round((100 * partialValue) / totalValue);
+};
+
+export default { percentage };
+```
+
