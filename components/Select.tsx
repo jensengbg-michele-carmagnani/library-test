@@ -1,15 +1,31 @@
-'use client';
+"use client";
 import React, { useState } from "react";
-import { ArrowDownIcon } from "@heroicons/react/24/solid";
-
-import OPTIONS_BOOKS from "../helpers/Options_Book";
-type Props = {
-  id: string;
+type booksType = {
+  value: string;
+  label: string;
 };
-const Select: React.FC<Props> = ({ id }) => {
+type Props = {
+  className?: string;
+  id: string;
+  optionsType: booksType[];
+  onChangeHandler?: (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    option: string
+  ) => void;
+};
+const Select: React.FC<Props> = ({
+  id,
+  optionsType,
+  className,
+  onChangeHandler,
+}) => {
   const [selectedOption, setSelectedOption] = useState("Choose an option");
-  const changeOptionHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const changeOptionHandler = (
+    e: React.ChangeEvent<HTMLSelectElement>,
+    option: string
+  ) => {
     setSelectedOption(e.target.value);
+    onChangeHandler && onChangeHandler(e, option);
   };
   return (
     <div>
@@ -19,14 +35,16 @@ const Select: React.FC<Props> = ({ id }) => {
         id={id}
         value={selectedOption}
         required
-        onChange={(e) => changeOptionHandler(e)}
-        className={` placeholder-night-900 focus:outline-none rounded-md bg-[#3d9363] py-3  px-4 w-full font-medium mb-2 cursor-pointer `}
+        onChange={(e) => {
+          changeOptionHandler(e, selectedOption);
+        }}
+        className={` placeholder-night-900 focus:outline-none rounded-md  w-full font-medium mb-2 cursor-pointer ${className} `}
       >
         <option selected value="">
           Choose an options
         </option>
 
-        {OPTIONS_BOOKS?.map((option, index) => {
+        {optionsType?.map((option, index) => {
           return (
             <option key={index} className="text-white" value={option.value}>
               {option.label}

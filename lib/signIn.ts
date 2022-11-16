@@ -1,4 +1,4 @@
-import { LoginForm, ResLogin } from "../../typing";
+import { LoginForm, ResLogin } from "../typing";
 
 export default async function signIn(dataForm: LoginForm) {
   const data = await fetch(`https://devies-reads-be.onrender.com/auth/login`, {
